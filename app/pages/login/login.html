@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <ion-title>Welcome to GolfBot!</ion-title>
+</ion-navbar>
+<ion-content padding class="login">
+  <form [ngFormModel]="loginForm" (submit)="login($event)">
+    <ion-card>
+      <ion-card-header>
+        Please enter your credentials:
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" ngControl="username" value="" placeholder="Username/Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" ngControl="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <button full type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+</ion-content>
