@@ -1,29 +1,30 @@
-import {ViewChild} from '@angular/core';
-import {App, Platform, Nav} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {GettingStartedPage} from './pages/getting-started/getting-started';
-import {ListPage} from './pages/list/list';
-import {LoginPage} from './pages/login/login';
+import {Component, ViewChild} from "@angular/core";
+import {ionicBootstrap, Platform, Nav, Loading} from "ionic-angular";
+import {StatusBar} from "ionic-native";
+import {GettingStartedPage} from "./pages/getting-started/getting-started";
+import {ListPage} from "./pages/list/list";
+import {LoginPage} from "./pages/login/login";
+import {CoursesPage} from "./pages/courses/courses";
 
 
-@App({
-  templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+@Component({
+  templateUrl: "build/app.html",
 })
 export class GolfBotApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = GettingStartedPage;
-  pages: Array<{title: string, component: any}>
+  pages: Array<{ title: string, component: any }>;
 
   constructor(private platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Getting Started', component: GettingStartedPage },
-      { title: 'List', component: ListPage },
-      { title: 'Login', component: LoginPage},
+      { title: "Getting Started", component: GettingStartedPage },
+      { title: "Courses", component: CoursesPage },
+      { title: "List", component: ListPage } ,
+      { title: "Login", component: LoginPage},
     ];
 
   }
@@ -38,7 +39,14 @@ export class GolfBotApp {
 
   openPage(page) {
     // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
+    // we wouldn"t want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }
+
+// Pass the main app component as the first argument
+// Pass any providers for your app in the second argument
+// Set any config for your app as the third argument:
+// http://ionicframework.com/docs/v2/api/config/Config/
+
+ionicBootstrap(GolfBotApp);

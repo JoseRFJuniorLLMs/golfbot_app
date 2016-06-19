@@ -1,0 +1,23 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Courses</ion-title>
+</ion-navbar>
+
+<ion-content padding class="courses">
+    <button block (click)="createCourse()">
+        <ion-icon name="add-circle"></ion-icon>
+        Add a Course
+    </button>
+    <ion-list>
+        <ion-item *ngFor="let course of courses" (click)="courseTapped($event, course)">
+            {{course.name}}
+        </ion-item>
+    </ion-list>
+    <ion-card *ngIf="noCourses">
+        <ion-card-content>
+            There are no courses in the database. Please add one!
+        </ion-card-content>
+    </ion-card>
+</ion-content>

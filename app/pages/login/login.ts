@@ -1,15 +1,16 @@
-import {Page, NavController} from 'ionic-angular';
-import {FormBuilder,Validators} from '@angular/common';
-import {HTTP_PROVIDERS} from '@angular/http';
-import {PlayerApi} from '../../services/gb-services';
+import {Component} from "@angular/core";
+import {NavController} from "ionic-angular";
+import {FormBuilder, Validators, ControlGroup} from "@angular/common";
+import {HTTP_PROVIDERS} from "@angular/http";
+import {PlayerApi} from "../../services/gb-services";
 
-@Page({
-  templateUrl: 'build/pages/login/login.html',
+@Component({
+  templateUrl: "build/pages/login/login.html",
   providers: [HTTP_PROVIDERS, PlayerApi]
 })
 export class LoginPage {
 
-  private loginForm;
+  loginForm: ControlGroup;
 
   constructor(public nav: NavController, private playerApi: PlayerApi, fb: FormBuilder) {
     this.loginForm = fb.group({
@@ -18,18 +19,19 @@ export class LoginPage {
     });
   }
 
-  login(event) {
+  login(event): void {
     event.preventDefault();
-    this.playerApi.login(this.loginForm.value).toPromise()
-      .then(res => {
-        // what happens when it works!
-        // store creds and/or auth token locally
-        // whenever app is opened, check for creds/token
-        // and take them directly in
-      })
-      .catch(err => {
-        // what happens when it fails
-        console.log(err);
-      });
+    this.playerApi.login(this.loginForm.value)
+      .subscribe(this.storeCredentials, this.notifyOnFail);
   }
+
+  storeCredentials(user: any) {
+    console.log(user);
+  }
+
+  notifyOnFail(err: any) {
+    console.log(err);
+  }
+
+  get value(): string { return this.loginForm.value; }
 }

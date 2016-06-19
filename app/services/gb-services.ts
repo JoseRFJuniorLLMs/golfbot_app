@@ -140,7 +140,6 @@ export abstract class BaseLoopBackApi {
   }
 
   protected init() {
-    // this.path = "http://golfbot.com/api";
     this.path = "http://my.golfbot.com/api";
   }
 

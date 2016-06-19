@@ -1,0 +1,35 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Course</ion-title>
+</ion-navbar>
+
+<ion-content padding class="course">
+    <form [ngFormModel]="courseForm" (submit)="saveCourse($event, course)">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Course Name</ion-label>
+                <ion-input ngControl="name" [(ngModel)]="course.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Course Location</ion-label>
+                <ion-input ngControl="location" [(ngModel)]="course.location"></ion-input>
+            </ion-item>
+        </ion-list>
+        <h2>Holes</h2>
+        <ion-grid ngControlGroup="holes">
+            <ion-row class="header">
+                <ion-col width-33>#</ion-col>
+                <ion-col width-33>Par</ion-col>
+                <ion-col width-33>Yards</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let h of holes.controls;let i = index">
+                <ion-col width-33><ion-input type="number" [ngFormControl]="h.controls.num" [(ngModel)]="course.holes[i].num" readonly tabindex="-1"></ion-input></ion-col>
+                <ion-col width-33><ion-input type="number" [ngFormControl]="h.controls.par" [(ngModel)]="course.holes[i].par"></ion-input></ion-col>
+                <ion-col width-33><ion-input type="number" [ngFormControl]="h.controls.yds" [(ngModel)]="course.holes[i].yds"></ion-input></ion-col>
+            </ion-row>
+        </ion-grid>
+        <button block type="submit" [disabled]="!courseForm.valid">Save Course</button>
+    </form>
+</ion-content>

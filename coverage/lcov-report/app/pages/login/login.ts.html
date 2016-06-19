@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">84.38% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>24/27</span>
+        <span class='fraction'>27/32</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>29/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.14% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/7</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">78.57% </span>
+        <span class="strong">72.22% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/14</span>
+        <span class='fraction'>13/18</span>
       </div>
       <div class='fl pad1y'>
         <span class="strong">3 statements, 15 branches</span>
@@ -82,7 +82,8 @@
 33
 34
 35
-36</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+36
+37</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -95,8 +96,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -108,17 +109,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Page, NavController} from 'ionic-angular';
-import {FormBuilder,Validators} from '@angular/common';
+import {FormBuilder,Validators,ControlGroup} from '@angular/common';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {PlayerApi} from '../../services/gb-services';
 &nbsp;
@@ -128,7 +130,7 @@ import {PlayerApi} from '../../services/gb-services';
 })
 export class LoginPage {
 &nbsp;
-  private loginForm;
+  loginForm: ControlGroup;
 &nbsp;
   constructor(public nav: NavController, private playerApi: PlayerApi, fb: FormBuilder) {
     this.loginForm = fb.group({
@@ -137,20 +139,21 @@ export class LoginPage {
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  login(e</span>vent) {
+<span class="fstat-no" title="function not covered" >  login(e</span>vent): void {
 <span class="cstat-no" title="statement not covered" >    event.p</span>reventDefault();
-<span class="cstat-no" title="statement not covered" >    this.playerApi.login(this.loginForm.value).toPromise()</span>
-      .then(<span class="fstat-no" title="function not covered" >res =&gt; {</span>
-        // what happens when it works!
-        // store creds and/or auth token locally
-        // whenever app is opened, check for creds/token
-        // and take them directly in
-      })
-      .catch(<span class="fstat-no" title="function not covered" >err =&gt; {</span>
-        // what happens when it fails
-<span class="cstat-no" title="statement not covered" >        console.log(e</span>rr);
-      });
+<span class="cstat-no" title="statement not covered" >    this.playerApi.login(this.loginForm.value)</span>
+      .subscribe(this.storeCredentials, this.notifyOnFail);
   }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  storeCredentials(u</span>ser: any) {
+<span class="cstat-no" title="statement not covered" >    console.log(u</span>ser);
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  notifyOnFail(e</span>rr: any) {
+<span class="cstat-no" title="statement not covered" >    console.log(e</span>rr);
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  g</span>et value(): string { <span class="cstat-no" title="statement not covered" >return this.loginForm.v</span>alue; }
 }
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -158,7 +161,7 @@ export class LoginPage {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 08 2016 18:56:16 GMT-0400 (EDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 17 2016 13:25:25 GMT-0400 (EDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

@@ -1,0 +1,14 @@
+.course {
+    ion-row {
+        border-bottom: 1px solid #999;
+    }
+    ion-col, ion-col input {
+        text-align: center;
+    }
+    ion-row.header ion-col {
+        font-weight: bold;
+    }
+    .text-input {
+        margin: 5px 0 4px;
+    }
+}
