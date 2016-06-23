@@ -38,9 +38,14 @@ var copyScripts = require('ionic-gulp-scripts-copy');
 
 var isRelease = argv.indexOf('--release') > -1;
 
+gulp.task('image_assets', () => {
+  return gulp.src(['app/assets/images/*'])
+    .pipe(gulp.dest('www/build/images'));
+});
+
 gulp.task('watch', ['clean'], function(done){
   runSequence(
-    ['sass', 'html', 'fonts', 'scripts'],
+    ['sass', 'html', 'fonts', 'scripts', 'image_assets'],
     function(){
       gulpWatch('app/**/*.scss', function(){ gulp.start('sass'); });
       gulpWatch('app/**/*.html', function(){ gulp.start('html'); });
@@ -51,7 +56,7 @@ gulp.task('watch', ['clean'], function(done){
 
 gulp.task('build', ['clean'], function(done){
   runSequence(
-    ['sass', 'html', 'fonts', 'scripts'],
+    ['sass', 'html', 'fonts', 'scripts', 'image_assets'],
     function(){
       buildBrowserify({
         minify: isRelease,

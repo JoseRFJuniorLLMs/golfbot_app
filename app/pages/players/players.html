@@ -11,7 +11,7 @@
         Add a Player
     </button>
     <ion-item-group *ngFor="let team of teams">
-        <ion-item-divider (click)="teamTapped($event, team)">{{team.name}}</ion-item-divider>
+        <ion-item-divider (click)="teamTapped($event, team)"><strong>{{team.name}}</strong></ion-item-divider>
         <ion-item *ngFor="let player of players | filter:{teamId:team.id}" (click)="playerTapped($event, player, team)">
             {{player.firstName}} {{player.lastName}}
         </ion-item>

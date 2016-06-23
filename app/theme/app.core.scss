@@ -9,9 +9,14 @@
 
 @import "../pages/getting-started/getting-started";
 
-@import "../pages/list/list";
 @import "../pages/login/login.scss";
 @import "../pages/courses/courses.scss";
 @import "../pages/course/course.scss";
 @import "../pages/teams/teams.scss";
 @import "../pages/team/team.scss";
+
+ion-content {
+    background-image: url(../images/background.jpg);
+    background-attachment: fixed;
+    background-position: center;
+}
