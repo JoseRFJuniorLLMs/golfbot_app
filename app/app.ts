@@ -1,15 +1,16 @@
 import { Component, ViewChild } from "@angular/core";
 import { ionicBootstrap, Platform, Nav, Loading } from "ionic-angular";
 import { StatusBar } from "ionic-native";
+import { ArrayFilterPipe } from "./pipes/array-filter.pipe";
 import { GettingStartedPage } from "./pages/getting-started/getting-started";
-import { ListPage } from "./pages/list/list";
 import { LoginPage } from "./pages/login/login";
 import { TeamsPage } from "./pages/teams/teams";
 import { CoursesPage } from "./pages/courses/courses";
-
+import { PlayersPage } from "./pages/players/players";
 
 @Component({
   templateUrl: "build/app.html",
+  pipes: [ArrayFilterPipe]
 })
 export class GolfBotApp {
   @ViewChild(Nav) nav: Nav;
@@ -25,7 +26,7 @@ export class GolfBotApp {
       { title: "Getting Started", component: GettingStartedPage },
       { title: "Courses", component: CoursesPage },
       { title: "Teams", component: TeamsPage },
-      { title: "List", component: ListPage },
+      { title: "Players", component: PlayersPage },
       { title: "Login", component: LoginPage},
     ];
 

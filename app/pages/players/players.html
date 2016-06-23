@@ -1,0 +1,24 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Players</ion-title>
+</ion-navbar>
+
+<ion-content padding class="players">
+    <button block (click)="createPlayer()">
+        <ion-icon name="add-circle"></ion-icon>
+        Add a Player
+    </button>
+    <ion-item-group *ngFor="let team of teams">
+        <ion-item-divider (click)="teamTapped($event, team)">{{team.name}}</ion-item-divider>
+        <ion-item *ngFor="let player of players | filter:{teamId:team.id}" (click)="playerTapped($event, player, team)">
+            {{player.firstName}} {{player.lastName}}
+        </ion-item>
+    </ion-item-group>
+    <ion-card *ngIf="noPlayers">
+        <ion-card-content>
+            There are no players in the database. Please add one!
+        </ion-card-content>
+    </ion-card>
+</ion-content>

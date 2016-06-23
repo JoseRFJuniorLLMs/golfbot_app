@@ -1,0 +1,46 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Player</ion-title>
+</ion-navbar>
+
+<ion-content padding class="player">
+    <form [ngFormModel]="playerForm" (submit)="savePlayer($event, player)">
+        <ion-list>
+            <ion-item>
+                <ion-label>Team</ion-label>
+                <ion-select ngControl="teamId" [(ngModel)]="player.teamId">
+                    <ion-option *ngFor="let team of teams" value="{{team.id}}">{{team.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>First Name</ion-label>
+                <ion-input ngControl="firstName" [(ngModel)]="player.firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Last Name</ion-label>
+                <ion-input ngControl="lastName" [(ngModel)]="player.lastName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Username</ion-label>
+                <ion-input ngControl="username" [(ngModel)]="player.username"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input ngControl="email" [(ngModel)]="player.email"></ion-input>
+            </ion-item>
+            <ion-item-group ngControlGroup="passwords">
+                <ion-item>
+                    <ion-label stacked>Password</ion-label>
+                    <ion-input type="password" ngControl="password" [(ngModel)]="player.password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>Confirm Password</ion-label>
+                    <ion-input type="password" ngControl="confirm"></ion-input>
+                </ion-item>
+            </ion-item-group>
+        </ion-list>
+        <button block type="submit" [disabled]="!playerForm.valid">Save Player</button>
+    </form>
+</ion-content>
