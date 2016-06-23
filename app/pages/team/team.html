@@ -1,0 +1,18 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Team</ion-title>
+</ion-navbar>
+
+<ion-content padding class="team">
+    <form [ngFormModel]="teamForm" (submit)="saveTeam($event, team)">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Team Name</ion-label>
+                <ion-input ngControl="name" [(ngModel)]="team.name"></ion-input>
+            </ion-item>
+        </ion-list>
+        <button block type="submit" [disabled]="!teamForm.valid">Save Team</button>
+    </form>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Teams</ion-title>
+</ion-navbar>
+
+<ion-content padding class="teams">
+    <button block (click)="createTeam()">
+        <ion-icon name="add-circle"></ion-icon>
+        Add a Team
+    </button>
+    <ion-list>
+        <ion-item *ngFor="let team of teams" (click)="teamTapped($event, team)">
+            {{team.name}}
+        </ion-item>
+    </ion-list>
+    <ion-card *ngIf="noTeams">
+        <ion-card-content>
+            There are no teams in the database. Please add one!
+        </ion-card-content>
+    </ion-card>
+</ion-content>

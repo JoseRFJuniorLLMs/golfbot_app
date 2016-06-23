@@ -1,10 +1,11 @@
-import {Component, ViewChild} from "@angular/core";
-import {ionicBootstrap, Platform, Nav, Loading} from "ionic-angular";
-import {StatusBar} from "ionic-native";
-import {GettingStartedPage} from "./pages/getting-started/getting-started";
-import {ListPage} from "./pages/list/list";
-import {LoginPage} from "./pages/login/login";
-import {CoursesPage} from "./pages/courses/courses";
+import { Component, ViewChild } from "@angular/core";
+import { ionicBootstrap, Platform, Nav, Loading } from "ionic-angular";
+import { StatusBar } from "ionic-native";
+import { GettingStartedPage } from "./pages/getting-started/getting-started";
+import { ListPage } from "./pages/list/list";
+import { LoginPage } from "./pages/login/login";
+import { TeamsPage } from "./pages/teams/teams";
+import { CoursesPage } from "./pages/courses/courses";
 
 
 @Component({
@@ -23,7 +24,8 @@ export class GolfBotApp {
     this.pages = [
       { title: "Getting Started", component: GettingStartedPage },
       { title: "Courses", component: CoursesPage },
-      { title: "List", component: ListPage } ,
+      { title: "Teams", component: TeamsPage },
+      { title: "List", component: ListPage },
       { title: "Login", component: LoginPage},
     ];
 
